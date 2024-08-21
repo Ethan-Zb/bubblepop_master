@@ -1,0 +1,22 @@
+mysql:
+  host: 192.168.1.27
+  port: 3306
+  db: bubblepop_master
+  
+  user: admin
+  password: admin
+  log_level: dev
+  parseTime: true
+  charset: utf8mb4
+
+logger:
+  level: info
+  prefix: '[bubblepop_master]'
+  director: log
+  show_line: true
+  log_in_console: true
+
+system:
+  host: "0.0.0.0"
+  port: 8000
+  env: dev
