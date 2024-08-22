@@ -7,8 +7,14 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"gorm.io/gorm/schema"
 	"time"
 )
+
+//type DB struct {
+//	*gorm.DB
+//	TableEthan map[string]map[string]chan interface{}
+//}
 
 func Gorm() *gorm.DB {
 	return MysqlConnect()
@@ -28,10 +34,13 @@ func MysqlConnect() *gorm.DB {
 		//开发环境显示所有的sql
 		mysqlLogger = logger.Default.LogMode(logger.Info)
 	} else {
-		mysqlLogger = logger.Default.LogMode(logger.Error)
+		mysqlLogger = logger.Default.LogMode(logger.Warn)
 	}
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		NamingStrategy: schema.NamingStrategy{
+			SingularTable: true, // 全局禁用表名负数
+		},
 		Logger: mysqlLogger,
 	})
 

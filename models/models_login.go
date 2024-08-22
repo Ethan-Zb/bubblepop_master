@@ -28,10 +28,6 @@ type UserBaseInfo struct {
 	UpdateAt        time.Time `gorm:"column:update_time;autoUpdateTime" json:"update_time"`
 }
 
-func (UserBaseInfo) TableName() string {
-	return "user_base_info"
-}
-
 func InsertBaseInfo(db *gorm.DB, baseInfo map[string]interface{}) (uint, error) {
 	if baseInfo == nil {
 		return 0, nil
