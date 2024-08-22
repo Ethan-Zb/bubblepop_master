@@ -1,9 +1,13 @@
 package api
 
-import "bubblepop_master/api/prop_api"
+import (
+	"bubblepop_master/api/prop_api"
+	"bubblepop_master/api/user_api"
+)
 
-type ApiGroup struct {
+type Group struct {
 	PropApi prop_api.PropApi
+	UserApi user_api.UserApi
 }
 
-var ApiGroupApp = new(ApiGroup)
+var GroupApp = new(Group)
